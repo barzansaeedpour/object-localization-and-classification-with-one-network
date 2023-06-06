@@ -1,6 +1,6 @@
 # Object Localization and Classification with One Network on MNIST Dataset
 
-This repository contains code and resources for performing object localization and classification using a single network on an Augmented MNIST dataset . The project aims to demonstrate how a convolutional neural network (CNN) can be trained to not only classify handwritten digits but also localize the bounding boxes around them.
+This repository contains code and resources for performing object localization and classification using a single network on an Augmented MNIST dataset. The project aims to demonstrate how a convolutional neural network (CNN) can be trained to not only classify handwritten digits but also localize the bounding boxes around them.
 
 ## Table of Contents
 
@@ -31,10 +31,9 @@ The image is always centered so it's not a good example for object detection. Be
 ![network-architecture](./files/netwrol-architecture.PNG)
 
 Let's explore the architecture that we can use to do detection with this data set. You'll need a two output network, because we'll see that we have one output with the classification and that is what it sees in the image. The digit is that a three is zero or nine, and then the other output will be the location of the bounding box. So let's look at this piece by piece, first of all the image is fed in and it's a 75 by 75 image, so
-our input layer is scaled to that size. We have multiple layers of convolutions and pooling to help us with the classification to determine the contents of the image. And what it is that we're looking at, and this is no different than a simple MNIST classifier. And as with just about every other classifier the output is flattened and fed into dense layers for classification. But the key difference here with the outputs is that instead of just one output with the image classes we've typically seen. We've two outputs, one with the class and
-one with the location of the bounding box. The bounding box is predicted with a regression, which is a numerical prediction representing the location. And the dimensions of the bounding box, the bounding box prediction is
-learned from the input labels. The mapping function that converted the MNIST 28 by 28 to a 75 by 75, also adds these bounding boxes as a part of each label. So we can have one output from the dense
-layers to predict these bounding boxes. Given that we now have this complexity in the network, multiple outputs will naturally have to use the functional API. And other than the fact that we're using the functional API to be another output from the dense layers. The classification output is just the same as you're used to, it's 10 neurons activated by Softmax with one neuron per digit.
+our input layer is scaled to that size. We have multiple layers of convolutions and pooling to help us with the classification to determine the contents of the image. And what it is that we're looking at which is named feature extraction, and this is no different than a simple MNIST classifier. And as with just about every other classifier the output is flattened and fed into dense layers for classification. But the key difference here with the outputs is that instead of just one output with the image classes we've typically seen. 
+
+We've two outputs, one with the class and one with the location of the bounding box. The bounding box is predicted with a regression, which is a numerical prediction representing the location. And the dimensions of the bounding box, the bounding box prediction is learned from the input labels. The mapping function that converted the MNIST 28 by 28 to a 75 by 75, also adds these bounding boxes as a part of each label. So we can have one output from the dense layers to predict these bounding boxes. Given that we now have this complexity in the network, multiple outputs will naturally have to use the functional API. And other than the fact that we're using the functional API to be another output from the dense layers. The classification output is just the same as you're used to, it's 10 neurons activated by Softmax with one neuron per digit.
 
 ## Evaluation Object Localization by (IOU)
 
